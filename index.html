@@ -157,8 +157,15 @@
     animation: fadeUp 0.8s 0.2s ease both;
   }
 
-  .photo-frame {
-    position: relative; width: 360px; height: 420px;
+ .photo-frame {
+    position: relative;
+    width: 360px; height: 460px;
+    border-radius: 24px;
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   .photo-frame::before {
     content: '';
@@ -422,9 +429,16 @@
   .photo-placeholder img {
     width: 100%; height: 100%; object-fit: cover; border-radius: 24px;
   }
-  .carousel-img {
-    width: 100%; height: 100%; object-fit: cover; border-radius: 24px;
+.carousel-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 24px;
     display: block;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
   }
   .placeholder-inner { text-align: center; }
   .placeholder-icon { font-size: 3rem; margin-bottom: 12px; }
