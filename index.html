@@ -289,6 +289,7 @@
     transition: all .3s;
   }
   .skill-tag:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .skill-item { }
   .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
   .skill-name { font-size: 0.9rem; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; }
   .skill-name span { font-size: 1rem; }
@@ -412,6 +413,19 @@
   .carousel-wrap {
     width: 100%; height: 100%; border-radius: 24px;
     overflow: hidden; position: relative;
+  }
+  .carousel-wrap::after {
+    content: 'tap ›';
+    position: absolute; bottom: 14px; right: 14px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(6px);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem; color: var(--rose);
+    padding: 4px 10px; border-radius: 100px;
+    border: 1px solid var(--border);
+    pointer-events: none;
+    z-index: 10;
+    animation: fadeUp 1s 1s ease both;
   }
   .carousel-track {
     display: flex; height: 100%;
@@ -626,8 +640,9 @@
     track.style.transform = `translateX(-${cur * 100}%)`;
   }
 
-  // Auto-play every 3 seconds
-  setInterval(() => goTo(cur + 1), 3000);
+  // Click on photo to go next
+  track.addEventListener('click', () => goTo(cur + 1));
+  track.style.cursor = 'pointer';
 
   // Touch/swipe support
   let startX = 0;
